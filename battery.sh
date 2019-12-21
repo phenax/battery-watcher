@@ -5,9 +5,8 @@ BAT_CRITICAL_MSG="Shove that big charger in my port";
 
 POLL_INTERVAL=$(( 5 * 60 ));
 
+# Imports
 source ./utils.sh;
-
-# alias
 notify() { ./notify.sh "$@"; }
 
 # Notify if battery low
@@ -18,9 +17,8 @@ check() {
   fi;
 }
 
-show_battery_percentage() {
-  notify "info" "$(get_battery_status) $(get_battery_percentage)";
-}
+# Get battery status text
+get_status_text() { echo "$(get_battery_status) $(get_battery_percentage)"; }
 
 # Loop for checking if battery is low
 start_polling() {
@@ -31,8 +29,8 @@ start_polling() {
 }
 
 case "$1" in
-  get)    echo $(get_battery_percentage) ;;
-  show)   show_battery_percentage ;;
+  get)    echo $(get_status_text) ;;
+  show)   notify "info" "$(get_status_text)" ;;
   once)   check ;;
   watch)  start_polling ;;
   *)      echo "Usage: battery.sh (watch|get)" ;;
