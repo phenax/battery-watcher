@@ -1,0 +1,11 @@
+[Unit]
+Description=Batter watcher service
+After=upower.service
+
+[Service]
+Type=simple
+ExecStart=./battery.sh watch
+RestartSec=1min
+Restart=always
+
+
