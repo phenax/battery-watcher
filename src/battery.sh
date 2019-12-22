@@ -1,11 +1,7 @@
 #!/bin/bash
 
-BAT_LOW_MSG="Low battery. Shove that charger in quick!";
-BAT_CRITICAL_MSG="Shove that big charger in my port";
-
-POLL_INTERVAL=$(( 5 * 60 ));
-
 # Imports
+source ./config.sh;
 source ./utils.sh;
 notify() { ./notify.sh "$@"; }
 
