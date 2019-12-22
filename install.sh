@@ -3,11 +3,14 @@
 # Imports
 source ./src/config.sh;
 
+SERVICE_PATH="$SERVICES_DIR/$SERVICE_NAME";
+
 # Uninstall
 if [ "$1" == "uninstall" ]; then
   rm -rf $INSTALL_DIR;
   rm -f $BINARY;
-  #rm -f $SERVICES_DIR/$SERVICE_NAME;
+  rm -f $SERVICE_PATH;
+  echo "Uninstalled battery-watcher";
   exit 0;
 fi
 
@@ -28,5 +31,6 @@ chmod +x $BINARY &&
 
 ## Create service
 echo "Creating service..." &&
-cp ./$SERVICE_NAME $SERVICES_DIR;
+cp ./$SERVICE_NAME $SERVICES_DIR &&
+chmod +x $SERVICE_PATH;
 

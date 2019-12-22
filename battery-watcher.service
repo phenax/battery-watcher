@@ -1,11 +1,11 @@
 [Unit]
 Description=Batter watcher service
-After=upower.service
 
 [Service]
 Type=simple
-ExecStart=./battery.sh watch
+ExecStart=/usr/bin/battery-watcher watch
 RestartSec=1min
 Restart=always
 
-
+[Install]
+WantedBy=multi-user.target

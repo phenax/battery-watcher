@@ -29,6 +29,6 @@ case "$1" in
   show)   notify "info" "$(get_status_text)" ;;
   once)   check ;;
   watch)  start_polling ;;
-  *)      echo "Usage: battery.sh (watch|get)" ;;
+  *)      echo "Usage: battery.sh (watch|once|get|show)" ;;
 esac;
 
